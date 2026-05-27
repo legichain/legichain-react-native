@@ -1,0 +1,53 @@
+{
+  "name": "@legichain/sdk",
+  "version": "1.0.0",
+  "description": "Official Legichain SDK for React Native — KYC, AML screening, address verification. One API key wraps every customer-facing endpoint.",
+  "homepage": "https://legichain.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AhmetKaracali/legichain.git",
+    "directory": "sdk/mobile/react-native/legichain-sdk"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "author": "Legichain",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "react-native": "src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.72"
+  },
+  "peerDependenciesMeta": {
+    "react-native-nfc-manager": { "optional": true }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/react": "^18.2.0"
+  },
+  "keywords": [
+    "legichain",
+    "kyc",
+    "aml",
+    "sanctions",
+    "screening",
+    "address-verification",
+    "nfc",
+    "emrtd",
+    "react-native"
+  ]
+}
