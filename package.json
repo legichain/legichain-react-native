@@ -1,14 +1,13 @@
 {
   "name": "@legichain/sdk",
-  "version": "1.0.0",
-  "description": "Official Legichain SDK for React Native — KYC, AML screening, address verification. One API key wraps every customer-facing endpoint.",
+  "version": "2.0.0",
+  "description": "Official Legichain React Native SDK with guided KYC, NFC, active liveness and TR/EN screens.",
   "homepage": "https://legichain.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AhmetKaracali/legichain.git",
-    "directory": "sdk/mobile/react-native/legichain-sdk"
+    "url": "https://github.com/legichain/legichain-react-native.git"
   },
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "license": "MIT",
   "author": "Legichain",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,12 +16,29 @@
   "files": [
     "dist",
     "src",
-    "README.md"
+    "*.podspec",
+    "react-native.config.js",
+    "native-source.json",
+    "README.md",
+    "LICENSE",
+    "THIRD-PARTY-NOTICES.md",
+    "KYC-V2.md",
+    "kyc-contract.json",
+    "android/src",
+    "android/build.gradle",
+    "android/settings.gradle",
+    "android/consumer-rules.pro",
+    "ios/Core",
+    "ios/LegichainKycModule.swift",
+    "ios/LegichainKycModule.m",
+    "android/gradle.properties",
+    "VALIDATION.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsup src/index.ts --format cjs,esm --dts --external react-native --external react",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "npm run build && node --test tests/*.test.cjs"
   },
   "engines": {
     "node": ">=18"
@@ -31,13 +47,13 @@
     "react": ">=18",
     "react-native": ">=0.72"
   },
-  "peerDependenciesMeta": {
-    "react-native-nfc-manager": { "optional": true }
-  },
   "dependencies": {},
   "devDependencies": {
     "typescript": "^5.4.0",
-    "@types/react": "^18.2.0"
+    "@types/react": "^18.2.0",
+    "react": "18.3.1",
+    "react-native": "0.76.9",
+    "tsup": "^8.5.0"
   },
   "keywords": [
     "legichain",

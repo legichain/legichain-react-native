@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required so the host app can talk to the Legichain API + Cloudflare
+         tunnel. The host must declare the same permission. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <application>
+        <activity android:name="com.legichain.kyc.KycActivity" android:theme="@style/LegichainKycTheme" android:exported="false" android:screenOrientation="portrait" android:configChanges="orientation|screenSize|keyboardHidden" />
+    </application>
+</manifest>

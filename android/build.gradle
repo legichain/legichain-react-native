@@ -1,0 +1,41 @@
+buildscript {
+    ext.kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : '1.9.24'
+    repositories { google(); mavenCentral() }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+group = 'com.legichain'
+version = '2.0.0'
+android {
+    namespace 'com.legichain.react'
+    compileSdk 35
+    buildToolsVersion "36.0.0"
+    defaultConfig { minSdk 24; consumerProguardFiles 'consumer-rules.pro' }
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    kotlinOptions { jvmTarget = '17' }
+}
+repositories { google(); mavenCentral() }
+dependencies {
+
+    implementation 'org.opencv:opencv:4.13.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:okhttp-sse:4.12.0'
+    implementation 'com.google.mlkit:text-recognition:16.0.0'
+    implementation 'com.google.mlkit:face-detection:16.1.7'
+    implementation 'androidx.activity:activity-ktx:1.9.3'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.camera:camera-camera2:1.4.2'
+    implementation 'androidx.camera:camera-lifecycle:1.4.2'
+    implementation 'androidx.camera:camera-view:1.4.2'
+    implementation 'org.jmrtd:jmrtd:0.7.42'
+    implementation 'net.sf.scuba:scuba-sc-android:0.0.23'
+    compileOnly 'com.facebook.react:react-android:0.76.9'
+
+}

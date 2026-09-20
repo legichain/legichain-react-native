@@ -1,22 +1,4 @@
-/**
- * eMRTD chip-read interface.
- *
- * Full ICAO 9303 BAC + PACE + Active-Authentication crypto is a large
- * library — we don't bake it into the SDK. Instead we ship:
- *
- *   * `NfcReader` — abstract interface.
- *   * `SimulatedNfcReader` — drop-in fake for UI development.
- *
- * Recommended packages to plug in:
- *
- *   * `react-native-nfc-manager` — chip-session primitive for iOS
- *     + Android.
- *   * Community wrappers around `JMRTD` / `dmrtd` for BAC + DG parse.
- *
- * The flow controller accepts raw bytes; feed whatever your reader
- * produces.
- */
-
+/** Custom-reader compatibility interface. The packaged startKyc() flow uses real native JMRTD / NFCPassportReader readers. SimulatedNfcReader is for fixtures only. */
 export interface NfcReadResult {
   /** `"BAC"` or `"PACE"`. */
   protocol: "BAC" | "PACE";
@@ -26,6 +8,10 @@ export interface NfcReadResult {
   dg1?: Uint8Array;
   dg2?: Uint8Array;
   dg11?: Uint8Array;
+  dg7?: Uint8Array | ArrayBuffer | string;
+  dg12?: Uint8Array | ArrayBuffer | string;
+  dg13?: Uint8Array | ArrayBuffer | string;
+  deviceAttestation?: Record<string, unknown>;
   dg14?: Uint8Array;
   dg15?: Uint8Array;
   /** AA challenge response if DG15 was present + AA ran. */

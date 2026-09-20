@@ -1,0 +1,50 @@
+package com.legichain.kyc
+
+internal class KycText(private val language: String) {
+    operator fun get(key: String): String = (messages[key] ?: messages.getValue("error"))[if(language=="tr") 0 else 1]
+    companion object {
+        val messages = mapOf(
+            "welcome" to listOf("Kimliğinizi güvenle doğrulayın", "Verify your identity"),
+            "intro" to listOf("Kimliğinizi ve telefonunuzu hazırlayın. Belge, çip ve yüz kontrollerinde sizi adım adım yönlendireceğiz.", "Have your identity document ready. We will guide you through document, chip and face checks."),
+            "start" to listOf("Başlayalım", "Get started"),
+            "front" to listOf("Kimliğin ön yüzü", "Front of your document"),
+            "back" to listOf("Kimliğin arka yüzü", "Back of your document"),
+            "single" to listOf("Pasaport bilgi sayfası", "Passport photo page"),
+            "frame" to listOf("Belgenin tüm kenarlarını çerçeveye yerleştirin. Yansımayı önleyin.", "Fit all document edges inside the frame. Avoid reflections."),
+            "steady" to listOf("Sabit tutun, otomatik çekiliyor…", "Hold still, capturing automatically…"),
+            "capture" to listOf("Fotoğraf çek", "Take photo"),
+            "nfc" to listOf("Kimliğin çipini okuyalım", "Read your document chip"),
+            "nfc_hint" to listOf("Belgeyi telefonun arkasının üstüne yaklaştırın. Okuma başlamazsa arka yüz boyunca yavaşça kaydırın. Başlayınca sabit tutun.", "Hold the document against the upper back of your phone. If reading does not start, slowly move it along the back. Keep still once reading begins."),
+            "nfc_read" to listOf("Çipi oku", "Read chip"),
+            "nfc_busy" to listOf("Çip okunuyor. Belgeyi oynatmayın…", "Reading chip. Keep the document still…"),
+            "nfc_missing" to listOf("NFC kapalı veya bu cihazda desteklenmiyor. NFC’yi açıp tekrar deneyin.", "NFC is disabled or unavailable. Enable NFC and try again."),
+            "can" to listOf("Gerekirse 6 haneli CAN numarası", "6-digit CAN number, if required"),
+            "selfie" to listOf("Yüzünüzü çerçeveye yerleştirin", "Position your face in the frame"),
+            "neutral" to listOf("Kameraya düz bakın; gözleriniz açık olsun.", "Look straight at the camera with your eyes open."),
+            "active" to listOf("Kısa bir canlılık kontrolü", "A quick liveness check"),
+            "prepare" to listOf("Önce yönergeyi okuyun. Başlama işaretini bekleyin.", "Read the instruction first. Wait for the start cue."),
+            "go" to listOf("ŞİMDİ BAŞLAYIN", "START NOW"),
+            "return" to listOf("Tamam. Şimdi tekrar kameraya düz bakın.", "Good. Now look straight at the camera again."),
+            "head_left" to listOf("Başınızı sola çevirin", "Turn your head left"),
+            "head_right" to listOf("Başınızı sağa çevirin", "Turn your head right"),
+            "look_up" to listOf("Başınızı kaldırıp yukarı bakın", "Tilt your head up"),
+            "smile" to listOf("Dişleriniz görünecek şekilde gülümseyin", "Smile with your teeth showing"),
+            "blink" to listOf("Gözlerinizi kapatıp yeniden açın", "Close your eyes and open them again"),
+            "retry_live" to listOf("Hareketi doğrulayamadık. Hazır olduğunuzda tekrar deneyin.", "We could not confirm the movement. Try again when you are ready."),
+            "busy" to listOf("Bilgileriniz güvenle gönderiliyor…", "Securely sending your information…"),
+            "submitted" to listOf("Başvurunuz gönderildi", "Your application has been submitted"),
+            "submitted_hint" to listOf("Doğrulama başvurunuz alındı. Sonuç, hizmet aldığınız kuruluşa iletilecek; tamamlandığında onların bildirim kanalından haber alacaksınız.", "Your verification application has been received. The result will be sent to your service provider, who will notify you through their notification channel."),
+            "done" to listOf("Uygulamaya dön", "Return to app"),
+            "retry" to listOf("Tekrar dene", "Try again"),
+            "cancel" to listOf("Vazgeç", "Cancel"),
+            "permission" to listOf("Devam etmek için kamera izni gerekiyor. Ayarlardan kamera iznini açın.", "Camera permission is required. Enable camera access in Settings."),
+            "error" to listOf("Bu adımı tamamlayamadık. Bağlantınızı kontrol edip tekrar deneyin.", "We could not complete this step. Check your connection and try again."),
+            "select" to listOf("Belge türünü seçin", "Choose your document"),
+            "tr_id_card" to listOf("T.C. kimlik kartı", "Turkish identity card"),
+            "eu_national_id" to listOf("Ulusal kimlik kartı", "National identity card"),
+            "passport" to listOf("Pasaport", "Passport"),
+            "uk_passport" to listOf("Birleşik Krallık pasaportu", "UK passport"),
+            "driver_license" to listOf("Sürücü belgesi", "Driving licence"),
+        )
+    }
+}

@@ -100,6 +100,10 @@ export class KycApi {
     if (input.keyDerivation) body.key_derivation = input.keyDerivation;
     if (input.dg1) body.dg1_b64 = toBase64(input.dg1);
     if (input.dg2) body.dg2_b64 = toBase64(input.dg2);
+    if (input.dg7) body.dg7_b64 = toBase64(input.dg7);
+    if (input.dg12) body.dg12_b64 = toBase64(input.dg12);
+    if (input.dg13) body.dg13_b64 = toBase64(input.dg13);
+    if (input.deviceAttestation) body.device_attestation = input.deviceAttestation;
     if (input.dg11) body.dg11_b64 = toBase64(input.dg11);
     if (input.dg14) body.dg14_b64 = toBase64(input.dg14);
     if (input.dg15) body.dg15_b64 = toBase64(input.dg15);
@@ -174,14 +178,12 @@ export class KycApi {
     clientToken: string,
     input: LivenessSubmitInput,
   ): Promise<Record<string, unknown>> {
-    const body: Record<string, unknown> = {
-      challenge_token: input.challengeToken,
-      actions_performed: input.actionsPerformed,
+    const body = {
+      mode: input.mode, frame_b64: input.frameBase64,
+      frame_mime_type: input.frameMimeType ?? "image/jpeg",
+      challenge_token: input.challengeToken, completed_actions: input.completedActions ?? [],
+      frames: input.frames ?? [], device_attestation: input.deviceAttestation,
     };
-    if (input.frames) {
-      body.frames_b64 = input.frames.map(toBase64);
-    }
-    if (input.padScore !== undefined) body.pad_score = input.padScore;
     return this.client.request(
       `/v1/kyc/applications/${applicationId}/liveness`,
       { body, clientToken },

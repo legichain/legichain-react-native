@@ -1,0 +1,26 @@
+{
+  "sources": [
+    "legichain/legichain-android",
+    "legichain/legichain-ios"
+  ],
+  "sha256": {
+    "android/src/main/kotlin/com/legichain/kyc/ActiveChallenge.kt": "f7e1df001a08b645cae12c324617136f0990f242e715eb0c9a768de5a5eb4972",
+    "android/src/main/kotlin/com/legichain/kyc/ChipReader.kt": "4e2a2d5d15f8b369253944ae396cf4c86f743017dc00628c83bd0a7d45faa76d",
+    "android/src/main/kotlin/com/legichain/kyc/DocumentBounds.kt": "815bcbf27853468a097d565e1b20a0a0188e0cabc5a5fe3e881de21c0365616d",
+    "android/src/main/kotlin/com/legichain/kyc/GuideView.kt": "0184b7d1a2690f6bc9ee4d8b4190382643bdf732e96e85ff6ad2d3e222c65feb",
+    "android/src/main/kotlin/com/legichain/kyc/KycActivity.kt": "ec8855588b0be21593eb7a4a3bc9a1833d15c18e1ac6bf9b5ef94aaae6034012",
+    "android/src/main/kotlin/com/legichain/kyc/KycSession.kt": "0e7993b8fbfaabfa13edc42a89035e3cffd32caac0252103cb4ab96c7f27dcbb",
+    "android/src/main/kotlin/com/legichain/kyc/KycText.kt": "249317e46cbb414b9ae6066a7f679e05e0acfca85ada4a32105a0a9f4bdd4168",
+    "android/src/main/kotlin/com/legichain/kyc/LegichainKYCClient.kt": "630491b4247c53e6be09548986003c994705766d15623b3e3b12599ecd613981",
+    "android/src/main/kotlin/com/legichain/kyc/Mrz.kt": "22f1411bb191c51c987f0b8fff3c6813dcfdf022ca66b0efe81b13d9fe8d0b86",
+    "ios/Core/ActiveChallenge.swift": "2aa9ddf7432d73fd1cf1b132471653d529bb05542e4fa3c0355d635eaecfb55b",
+    "ios/Core/CameraSource.swift": "f08d9dd0d2460deda34069db21923509b3f4b1649e9a8ab82e907862f6a33a85",
+    "ios/Core/ChipReader.swift": "ad90107ba69b4dd11a2a7832f415a3df2e87307807852ec16e1a14778db262ce",
+    "ios/Core/KycSession.swift": "72ab08576a351409c3f1b24374585b5f2ff769329a4efbf7a00c5a443b2b0345",
+    "ios/Core/KycText.swift": "ca7b5aa36bc8dc7fdb7bb8c2dc4341c9bf378e6a0bf98b0820c9b9eb440892ef",
+    "ios/Core/KycViewController.swift": "747ff0331f711a91e3407f263dd750e20a04e605428ea0e3a3396ba370bbea63",
+    "ios/Core/LegichainKYCClient.swift": "8c0bffaa19c55a1654b3f0ac3de83a93875dbecbbe342beecfa87dd75f0cd3a9",
+    "android/src/main/AndroidManifest.xml": "04bb750a2def447800380c614b6b2f58abfa99785a160623e689c0e88fb32d04",
+    "android/src/main/res/values/styles.xml": "1abd3c3dfafbf9795882358cb279fe76d44d494a319a79caa4879583b97e6714"
+  }
+}

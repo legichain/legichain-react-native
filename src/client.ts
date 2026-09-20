@@ -8,7 +8,7 @@ import { WebhooksApi } from "./webhooks";
 export interface LegichainClientOptions {
   /** `key_xxx.secret_yyy` from `panel.legichain.com/app/api-keys`. */
   apiKey: string;
-  /** Defaults to production: `https://panel.legichain.com`. */
+  /** Defaults to production: `https://api.legichain.com`. */
   baseUrl?: string;
   /** Per-request timeout in ms. Default 30 000. */
   timeoutMs?: number;
@@ -54,13 +54,13 @@ export class LegichainClient {
   constructor(opts: LegichainClientOptions) {
     if (!opts.apiKey) throw new Error("apiKey is required");
     this.apiKey = opts.apiKey;
-    this.baseUrl = (opts.baseUrl ?? "https://panel.legichain.com").replace(
+    this.baseUrl = (opts.baseUrl ?? "https://api.legichain.com").replace(
       /\/$/,
       "",
     );
     this.timeoutMs = opts.timeoutMs ?? 30_000;
     this._fetch = opts.fetch ?? globalThis.fetch.bind(globalThis);
-    this._userAgent = `legichain-rn-sdk/1.0.0${
+    this._userAgent = `legichain-rn-sdk/2.0.0${
       opts.userAgent ? ` (${opts.userAgent})` : ""
     }`;
 

@@ -1,3 +1,12 @@
+# 2.0.0 — 2026-09-20
+
+- Current KYC evidence contract, check flags and pending decisions.
+- Single configured API token; session helpers manage application state.
+- Evidence processing is awaited before submission; final result is webhook-driven.
+- Native camera/document frames, MRZ auto capture, BAC/PACE NFC and observed active liveness.
+- Turkish/English guided screens and submitted/cancelled host return.
+- Device acceptance and iOS Xcode build remain pending; see KYC-V2.md.
+
 # Changelog
 
 ## 1.0.0 — 2026-05-27

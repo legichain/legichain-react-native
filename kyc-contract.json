@@ -1,0 +1,1250 @@
+{
+  "source": "src/legichain/api/kyc_schemas.py",
+  "source_sha256": "18974d145464b900390596b37efc86e3def3e437021c350bd7f3af93e75e6070",
+  "models": {
+    "KYCApplicationCreateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "external_reference": {
+          "anyOf": [
+            {
+              "maxLength": 255,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "External Reference"
+        },
+        "subject_external_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subject External Id"
+        },
+        "persona_id": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Persona Id"
+        },
+        "intent": {
+          "default": "onboarding",
+          "enum": [
+            "onboarding",
+            "re_verification",
+            "periodic_review"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "document_type_allowed": {
+          "items": {
+            "enum": [
+              "tr_id_card",
+              "passport",
+              "driver_license",
+              "eu_national_id",
+              "uk_passport"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Document Type Allowed",
+          "type": "array"
+        },
+        "nfc_required": {
+          "default": false,
+          "title": "Nfc Required",
+          "type": "boolean"
+        },
+        "liveness_required": {
+          "default": true,
+          "title": "Liveness Required",
+          "type": "boolean"
+        },
+        "face_match_required": {
+          "default": true,
+          "title": "Face Match Required",
+          "type": "boolean"
+        },
+        "callback_url": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Callback Url"
+        },
+        "claimed_full_name": {
+          "anyOf": [
+            {
+              "maxLength": 255,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Full Name"
+        },
+        "claimed_personal_number": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Personal Number"
+        },
+        "claimed_birth_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Birth Date"
+        },
+        "claimed_expiry_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Expiry Date"
+        },
+        "claimed_document_number": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Document Number"
+        },
+        "claimed_nationality": {
+          "anyOf": [
+            {
+              "maxLength": 3,
+              "minLength": 3,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Nationality"
+        },
+        "claimed_issuing_country": {
+          "anyOf": [
+            {
+              "maxLength": 3,
+              "minLength": 3,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Issuing Country"
+        },
+        "claimed_sex": {
+          "anyOf": [
+            {
+              "enum": [
+                "M",
+                "F"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Sex"
+        },
+        "claimed_document_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "tr_id_card",
+                "passport",
+                "driver_license",
+                "eu_national_id",
+                "uk_passport"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Claimed Document Type"
+        },
+        "meta": {
+          "additionalProperties": true,
+          "title": "Meta",
+          "type": "object"
+        }
+      },
+      "title": "KYCApplicationCreateRequest",
+      "type": "object"
+    },
+    "KYCApplicationCreateResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "application_id": {
+          "title": "Application Id",
+          "type": "string"
+        },
+        "persona_id": {
+          "title": "Persona Id",
+          "type": "string"
+        },
+        "persona_created": {
+          "title": "Persona Created",
+          "type": "boolean"
+        },
+        "client_token": {
+          "title": "Client Token",
+          "type": "string"
+        },
+        "client_token_expires_at": {
+          "format": "date-time",
+          "title": "Client Token Expires At",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "next_steps": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Next Steps",
+          "type": "array"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "application_id",
+        "persona_id",
+        "persona_created",
+        "client_token",
+        "client_token_expires_at",
+        "state",
+        "next_steps",
+        "expires_at"
+      ],
+      "title": "KYCApplicationCreateResponse",
+      "type": "object"
+    },
+    "KYCApplicationStatusResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "application_id": {
+          "title": "Application Id",
+          "type": "string"
+        },
+        "persona_id": {
+          "title": "Persona Id",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "current_step": {
+          "title": "Current Step",
+          "type": "string"
+        },
+        "retry_available": {
+          "title": "Retry Available",
+          "type": "boolean"
+        },
+        "current_attempt": {
+          "title": "Current Attempt",
+          "type": "integer"
+        },
+        "max_attempts": {
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "intent": {
+          "title": "Intent",
+          "type": "string"
+        },
+        "nfc_required": {
+          "title": "Nfc Required",
+          "type": "boolean"
+        },
+        "liveness_required": {
+          "default": true,
+          "title": "Liveness Required",
+          "type": "boolean"
+        },
+        "face_match_required": {
+          "default": true,
+          "title": "Face Match Required",
+          "type": "boolean"
+        },
+        "document_type_allowed": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Document Type Allowed",
+          "type": "array"
+        },
+        "risk_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Risk Score"
+        },
+        "decision": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision"
+        },
+        "extracted_fields": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extracted Fields"
+        },
+        "extracted_fields_by_source": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extracted Fields By Source"
+        },
+        "extracted_fields_detail": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extracted Fields Detail"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed At"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        },
+        "requested_at": {
+          "format": "date-time",
+          "title": "Requested At",
+          "type": "string"
+        },
+        "pii_purged_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pii Purged At"
+        }
+      },
+      "required": [
+        "application_id",
+        "persona_id",
+        "state",
+        "current_step",
+        "retry_available",
+        "current_attempt",
+        "max_attempts",
+        "intent",
+        "nfc_required",
+        "document_type_allowed",
+        "expires_at",
+        "requested_at"
+      ],
+      "title": "KYCApplicationStatusResponse",
+      "type": "object"
+    },
+    "KYCSubmitRequest": {
+      "additionalProperties": false,
+      "description": "Final submission — server assembles artifacts + runs decision pipeline.\n\nThe mobile/web client signals that all evidence has been provided\n(documents, optional NFC, selfie, liveness) and the server should now:\n  - evaluate hard-fail rules\n  - compute weighted risk score\n  - apply tenant policy thresholds\n  - persist `kyc_risk_scores` + `kyc_decisions` + optional manual review\n  - update the persona's identity attestation\n  - emit `kyc.completed` (or `kyc.manual_review.assigned`) webhook",
+      "properties": {
+        "notes": {
+          "anyOf": [
+            {
+              "maxLength": 512,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        }
+      },
+      "title": "KYCSubmitRequest",
+      "type": "object"
+    },
+    "KYCSubmitResponse": {
+      "additionalProperties": false,
+      "description": "The verdict, or an honest statement that there isn't one yet.\n\nBiometric evidence is produced by a worker, so at the moment submit\nis called the face match may still be running. The old contract had\nno way to say that: every field was required, so the only way to\nanswer was to decide without the evidence — which scored the\nmissing-evidence penalty and rejected the applicant.\n\nWhen `pending` is true the decision has not run. `outcome`,\n`decision_id` and `risk_score` are null because they do not exist\nyet, not because they failed. Poll `GET /applications/{id}/status`\nor wait for the `kyc.completed` webhook; both already carry the\noutcome once it lands. The response also arrives as HTTP 202 rather\nthan 200, so a client can branch on the status line alone.",
+      "properties": {
+        "application_id": {
+          "title": "Application Id",
+          "type": "string"
+        },
+        "persona_id": {
+          "title": "Persona Id",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "enum": [
+                "approved",
+                "rejected",
+                "manual_review"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome"
+        },
+        "outcome_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome Reason"
+        },
+        "decision_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Id"
+        },
+        "risk_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Risk Score"
+        },
+        "risk_components": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Risk Components",
+          "type": "object"
+        },
+        "hard_fail_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hard Fail Codes",
+          "type": "array"
+        },
+        "manual_review_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Manual Review Id"
+        },
+        "manual_review_priority": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Manual Review Priority"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed At"
+        },
+        "pending": {
+          "default": false,
+          "title": "Pending",
+          "type": "boolean"
+        },
+        "pending_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Pending On",
+          "type": "array"
+        },
+        "poll_after_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Poll After Ms"
+        }
+      },
+      "required": [
+        "application_id",
+        "persona_id",
+        "state"
+      ],
+      "title": "KYCSubmitResponse",
+      "type": "object"
+    },
+    "DocumentSubmitRequest": {
+      "additionalProperties": false,
+      "description": "Mobile/web client upload for one document side.\n\nAll document images are base64-encoded raw bytes (JPEG/PNG/HEIC).\nThe server decodes, runs OpenCV IQA pre-check (Laplacian + glare),\npersists the blob to encrypted object storage (managed/BYOC), creates\n`kyc_documents` + `kyc_document_images` rows, and enqueues an\nasynchronous `process_kyc_ocr` task for Tesseract + MRZ extraction.\n\n`side` semantics:\n- tr_id_card / driver_license: front + back (two calls).\n- passport: single (one call; MRZ is on the data page).",
+      "properties": {
+        "document_type": {
+          "enum": [
+            "tr_id_card",
+            "passport",
+            "driver_license",
+            "eu_national_id",
+            "uk_passport"
+          ],
+          "title": "Document Type",
+          "type": "string"
+        },
+        "side": {
+          "enum": [
+            "front",
+            "back",
+            "single"
+          ],
+          "title": "Side",
+          "type": "string"
+        },
+        "mime_type": {
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/heic"
+          ],
+          "title": "Mime Type",
+          "type": "string"
+        },
+        "image_b64": {
+          "maxLength": 12000000,
+          "minLength": 128,
+          "title": "Image B64",
+          "type": "string"
+        },
+        "captured_at_client": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Captured At Client"
+        },
+        "device_attestation": {
+          "additionalProperties": true,
+          "title": "Device Attestation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "document_type",
+        "side",
+        "mime_type",
+        "image_b64"
+      ],
+      "title": "DocumentSubmitRequest",
+      "type": "object"
+    },
+    "SelfieSubmitRequest": {
+      "additionalProperties": false,
+      "description": "Mobile/web client selfie upload.\n\nSubmits one selfie (image or short video frame) as base64. Server:\n  1. Runs OpenCV Haar face-quality assessment inline.\n  2. Persists the blob + creates `kyc_selfies` row.\n  3. Enqueues `process_kyc_face_match` ARQ task that matches against\n     the front-side document image.",
+      "properties": {
+        "mime_type": {
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/heic"
+          ],
+          "title": "Mime Type",
+          "type": "string"
+        },
+        "image_b64": {
+          "maxLength": 8000000,
+          "minLength": 128,
+          "title": "Image B64",
+          "type": "string"
+        },
+        "is_video": {
+          "default": false,
+          "title": "Is Video",
+          "type": "boolean"
+        },
+        "captured_at_client": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Captured At Client"
+        },
+        "device_attestation": {
+          "additionalProperties": true,
+          "title": "Device Attestation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "mime_type",
+        "image_b64"
+      ],
+      "title": "SelfieSubmitRequest",
+      "type": "object"
+    },
+    "LivenessChallengeRequest": {
+      "additionalProperties": false,
+      "description": "Mobile asks the server for a randomised active-challenge sequence.\n\nMobile then prompts the user through the requested actions (blink,\nhead_left, smile, etc.) recording frame metadata, and submits the\ncompleted action log back via `POST /liveness`.",
+      "properties": {
+        "length": {
+          "default": 3,
+          "maximum": 5,
+          "minimum": 2,
+          "title": "Length",
+          "type": "integer"
+        },
+        "ttl_seconds": {
+          "default": 60,
+          "maximum": 300,
+          "minimum": 30,
+          "title": "Ttl Seconds",
+          "type": "integer"
+        }
+      },
+      "title": "LivenessChallengeRequest",
+      "type": "object"
+    },
+    "LivenessChallengeResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "application_id": {
+          "title": "Application Id",
+          "type": "string"
+        },
+        "challenge_token": {
+          "title": "Challenge Token",
+          "type": "string"
+        },
+        "sequence": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Sequence",
+          "type": "array"
+        },
+        "issued_at": {
+          "format": "date-time",
+          "title": "Issued At",
+          "type": "string"
+        },
+        "valid_until": {
+          "format": "date-time",
+          "title": "Valid Until",
+          "type": "string"
+        }
+      },
+      "required": [
+        "application_id",
+        "challenge_token",
+        "sequence",
+        "issued_at",
+        "valid_until"
+      ],
+      "title": "LivenessChallengeResponse",
+      "type": "object"
+    },
+    "LivenessActionRecord": {
+      "additionalProperties": false,
+      "description": "One completed action in the active challenge sequence.",
+      "properties": {
+        "action": {
+          "enum": [
+            "blink",
+            "head_left",
+            "head_right",
+            "smile",
+            "look_up"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "started_at_ms": {
+          "minimum": 0,
+          "title": "Started At Ms",
+          "type": "integer"
+        },
+        "ended_at_ms": {
+          "minimum": 0,
+          "title": "Ended At Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "action",
+        "started_at_ms",
+        "ended_at_ms"
+      ],
+      "title": "LivenessActionRecord",
+      "type": "object"
+    },
+    "LivenessVideoFrame": {
+      "additionalProperties": false,
+      "description": "One frame of a multi-frame liveness video.\n\nThe mobile SDK captures ~5-15 frames during the active-challenge\nsequence, base64-encodes each, and submits them alongside the\nrepresentative frame for multi-frame temporal analysis (M19+).",
+      "properties": {
+        "image_b64": {
+          "maxLength": 2000000,
+          "minLength": 128,
+          "title": "Image B64",
+          "type": "string"
+        },
+        "timestamp_ms": {
+          "minimum": 0,
+          "title": "Timestamp Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "image_b64",
+        "timestamp_ms"
+      ],
+      "title": "LivenessVideoFrame",
+      "type": "object"
+    },
+    "LivenessSubmitRequest": {
+      "$defs": {
+        "LivenessActionRecord": {
+          "additionalProperties": false,
+          "description": "One completed action in the active challenge sequence.",
+          "properties": {
+            "action": {
+              "enum": [
+                "blink",
+                "head_left",
+                "head_right",
+                "smile",
+                "look_up"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "started_at_ms": {
+              "minimum": 0,
+              "title": "Started At Ms",
+              "type": "integer"
+            },
+            "ended_at_ms": {
+              "minimum": 0,
+              "title": "Ended At Ms",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "action",
+            "started_at_ms",
+            "ended_at_ms"
+          ],
+          "title": "LivenessActionRecord",
+          "type": "object"
+        },
+        "LivenessVideoFrame": {
+          "additionalProperties": false,
+          "description": "One frame of a multi-frame liveness video.\n\nThe mobile SDK captures ~5-15 frames during the active-challenge\nsequence, base64-encodes each, and submits them alongside the\nrepresentative frame for multi-frame temporal analysis (M19+).",
+          "properties": {
+            "image_b64": {
+              "maxLength": 2000000,
+              "minLength": 128,
+              "title": "Image B64",
+              "type": "string"
+            },
+            "timestamp_ms": {
+              "minimum": 0,
+              "title": "Timestamp Ms",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "image_b64",
+            "timestamp_ms"
+          ],
+          "title": "LivenessVideoFrame",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Mobile submits a representative frame + (optionally) the active\nchallenge completion log + (optionally) multi-frame video for\ntemporal liveness verification.\n\n`mode='passive'` runs single-frame PAD only (moire + saturation +\nglare). `mode='active'` additionally validates the action sequence\nagainst the previously-issued challenge AND, when ``frames`` is\nsupplied, runs MediaPipe FaceMesh-based temporal analysis to\nconfirm the actions actually occurred.",
+      "properties": {
+        "mode": {
+          "enum": [
+            "passive",
+            "active"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "frame_b64": {
+          "maxLength": 8000000,
+          "minLength": 128,
+          "title": "Frame B64",
+          "type": "string"
+        },
+        "frame_mime_type": {
+          "default": "image/jpeg",
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/heic"
+          ],
+          "title": "Frame Mime Type",
+          "type": "string"
+        },
+        "challenge_token": {
+          "anyOf": [
+            {
+              "maxLength": 255,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Challenge Token"
+        },
+        "completed_actions": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/LivenessActionRecord"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed Actions"
+        },
+        "captured_at_client": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Captured At Client"
+        },
+        "device_attestation": {
+          "additionalProperties": true,
+          "title": "Device Attestation",
+          "type": "object"
+        },
+        "frames": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/LivenessVideoFrame"
+              },
+              "maxItems": 30,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Frames"
+        }
+      },
+      "required": [
+        "mode",
+        "frame_b64"
+      ],
+      "title": "LivenessSubmitRequest",
+      "type": "object"
+    },
+    "NFCSubmitRequest": {
+      "additionalProperties": false,
+      "description": "Mobile-side NFC chip read submission.\n\nAll DG / SOD payloads are base64-encoded raw bytes (ICAO 9303\nlayout: outer 0x6N tag + length + value). The server validates\nthem with `kyc/nfc/verifier.verify_nfc()` against the trusted CSCA\nstore (kyc_csca_certificates).\n\nFaz G-7.6: ``access_error`` distinguishes a chip *read* failure\n(user couldn't get the phone close enough, antenna noise, chip\ndidn't respond) from a chip *content* failure (read succeeded but\nSOD/DG hashes don't verify → tampered). Access errors keep the\napplication at AWAITING_NFC so the user can try the read again;\ncontent failures push to REJECTED via HARD_NFC_HASH_MISMATCH.",
+      "properties": {
+        "protocol": {
+          "enum": [
+            "BAC",
+            "PACE"
+          ],
+          "title": "Protocol",
+          "type": "string"
+        },
+        "key_derivation": {
+          "anyOf": [
+            {
+              "enum": [
+                "MRZ",
+                "CAN"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Key Derivation"
+        },
+        "access_error": {
+          "default": false,
+          "title": "Access Error",
+          "type": "boolean"
+        },
+        "access_error_code": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Access Error Code"
+        },
+        "sod_b64": {
+          "anyOf": [
+            {
+              "maxLength": 1500000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sod B64"
+        },
+        "dg1_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg1 B64"
+        },
+        "dg2_b64": {
+          "anyOf": [
+            {
+              "maxLength": 400000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg2 B64"
+        },
+        "dg7_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg7 B64"
+        },
+        "dg11_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg11 B64"
+        },
+        "dg12_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg12 B64"
+        },
+        "dg13_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg13 B64"
+        },
+        "dg14_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg14 B64"
+        },
+        "dg15_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dg15 B64"
+        },
+        "active_authentication_b64": {
+          "anyOf": [
+            {
+              "maxLength": 200000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Active Authentication B64"
+        },
+        "read_at_client": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Read At Client"
+        },
+        "device_attestation": {
+          "additionalProperties": true,
+          "title": "Device Attestation",
+          "type": "object"
+        }
+      },
+      "required": [
+        "protocol"
+      ],
+      "title": "NFCSubmitRequest",
+      "type": "object"
+    }
+  }
+}

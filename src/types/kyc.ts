@@ -14,6 +14,8 @@ export interface KycApplicationCreateInput {
   intent?: Intent;
   document_type_allowed?: DocumentType[];
   nfc_required?: boolean;
+  liveness_required?: boolean;
+  face_match_required?: boolean;
   callback_url?: string;
   claimed_full_name?: string;
   claimed_personal_number?: string;
@@ -58,6 +60,8 @@ export interface KycStatus {
   max_attempts: number;
   intent?: string;
   nfc_required?: boolean;
+  liveness_required?: boolean;
+  face_match_required?: boolean;
   document_type_allowed?: DocumentType[];
   risk_score: number | null;
   decision: KycDecisionSummary | null;
@@ -101,6 +105,10 @@ export interface NfcSubmitInput {
   dg1?: Uint8Array | ArrayBuffer | string;
   dg2?: Uint8Array | ArrayBuffer | string;
   dg11?: Uint8Array | ArrayBuffer | string;
+  dg7?: Uint8Array | ArrayBuffer | string;
+  dg12?: Uint8Array | ArrayBuffer | string;
+  dg13?: Uint8Array | ArrayBuffer | string;
+  deviceAttestation?: Record<string, unknown>;
   dg14?: Uint8Array | ArrayBuffer | string;
   dg15?: Uint8Array | ArrayBuffer | string;
   activeAuthentication?: Uint8Array | ArrayBuffer | string;
@@ -140,19 +148,24 @@ export interface LivenessChallenge {
 }
 
 export interface LivenessSubmitInput {
-  challengeToken: string;
-  actionsPerformed: string[];
-  frames?: (Uint8Array | ArrayBuffer | string)[];
-  padScore?: number;
+  mode: "active" | "passive";
+  frameBase64: string;
+  frameMimeType?: "image/jpeg" | "image/png";
+  challengeToken?: string;
+  completedActions?: { action: "blink" | "head_left" | "head_right" | "smile" | "look_up"; started_at_ms: number; ended_at_ms: number }[];
+  frames?: { image_b64: string; timestamp_ms: number }[];
+  deviceAttestation?: Record<string, unknown>;
 }
 
 export interface KycDecision {
   application_id: string;
   persona_id: string;
-  outcome: DecisionOutcome;
+  outcome: DecisionOutcome | null;
+  pending?: boolean;
+  state?: string;
   outcome_reason: string | null;
   risk_score: number | null;
-  decision_id: string;
+  decision_id: string | null;
   hard_fail_codes: string[];
   manual_review_id: string | null;
   manual_review_priority: string | null;

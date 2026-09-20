@@ -32,6 +32,8 @@
  */
 
 export { LegichainClient } from "./client";
+export { startKyc } from "./nativeKyc";
+export type { NativeKycOptions, NativeKycResult } from "./nativeKyc";
 export type {
   LegichainClientOptions,
   ProblemDetails,
